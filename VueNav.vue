@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
     import { ref } from 'vue';
+    import NavRoute from './NavRoute';
 
     const sideIsOpen = ref(false);
 
@@ -36,7 +37,6 @@
                 label: 'Languages',
                 action: () => {
                     NavSchema.value = menuArray['Languages-sub'];
-                    text.value = 'Languages';
                 }
             },
             {
@@ -44,7 +44,6 @@
                 label: 'Frameworks',
                 action: () => {
                     NavSchema.value = menuArray['Frameworks-sub'];
-                    text.value = 'Frameworks';
                 }
             },
         ],
@@ -64,7 +63,7 @@
                 action: () => {
                     sideIsOpen.value = false;
                     itemSelected.value = 'PHP';
-                    text.value = 'PHP';
+                    component.value = NavRoute.components.PHPComponent;
                 }
             },
             {
@@ -73,7 +72,7 @@
                 action: () => {
                     sideIsOpen.value = false;
                     itemSelected.value = 'Javascript';
-                    text.value = 'JS';
+                    component.value = NavRoute.components.JSComponent;
                 }
             },
         ],
@@ -93,7 +92,7 @@
                 action: () => {
                     sideIsOpen.value = false;
                     itemSelected.value = 'Symfony';
-                    text.value = 'Symfony';
+                    component.value = NavRoute.components.SMFComponent;
                 }
             },
             {
@@ -102,7 +101,7 @@
                 action: () => {
                     sideIsOpen.value = false;
                     itemSelected.value = 'Vue';
-                    text.value = 'VUE <3 ';
+                    component.value = NavRoute.components.VUEComponent;
                 }
             },
         ],
@@ -117,7 +116,7 @@
                 action: () => {
                     NavSchema.value = menuArray['Languages-sub'];
                     itemSelected.value = 'PHP';
-                    text.value = 'PHP';
+                    component.value = NavRoute.components.PHPComponent;
                 }
             },
             {
@@ -126,7 +125,7 @@
                 action: () => {
                     NavSchema.value = menuArray['Frameworks-sub'];
                     itemSelected.value = 'Symfony';
-                    text.value = 'Symfony';
+                    component.value = NavRoute.components.SMFComponent;
                 }
             },
             {
@@ -135,7 +134,7 @@
                 action: () => {
                     NavSchema.value = menuArray['Frameworks-sub'];
                     itemSelected.value = 'Vue';
-                    text.value = 'VUE <3 ';
+                    component.value = NavRoute.components.VUEComponent;
                 }
             },
         ],
@@ -146,7 +145,7 @@
 
     const itemSelected = ref('');
 
-    const text = ref('Welcome');
+    const component = ref(NavRoute.components.WComponent)
 
 </script>
 
@@ -213,7 +212,7 @@
             <div class="container-body">
             
                 
-                <h1> {{ text }} </h1>
+                <component />
 
 
             </div>
